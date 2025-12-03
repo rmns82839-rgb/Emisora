@@ -1,72 +1,75 @@
+/* RESET Y FUENTE */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: #f4f4f9;
+    align-items: flex-start; /* Alinea arriba para evitar que el widget sea muy alto */
+    background: linear-gradient(135deg, #e0eafc, #cfdef3); /* Gradiente suave */
     min-height: 100vh;
     margin: 0;
+    padding: 20px;
     color: #333;
 }
 
-#player-container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+#main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Espacio entre el reproductor y el widget */
+    max-width: 450px;
     width: 100%;
+}
+
+/* ESTILO GENERAL DE TARJETA (CARD) */
+.card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 18px; /* Bordes suaves */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px); /* Pequeño efecto hover */
+}
+
+/* ESTILO DEL REPRODUCTOR */
+#player-container {
     text-align: center;
 }
 
-#info-display {
+h1 {
+    color: #4CAF50; /* Verde vibrante */
     margin-bottom: 20px;
-    padding: 10px;
-    background-color: #e9efff;
-    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.6em;
 }
 
-#controls button {
-    background-color: #4CAF50; /* Verde */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+/* DISPLAY DE ESTADO */
+#info-display {
+    margin: 15px 0;
+    padding: 12px;
+    background-color: #f7f7f9;
+    border-radius: 10px;
+    border: 1px solid #eee;
 }
 
-#controls button:hover {
-    background-color: #45a049;
+#status-message {
+    font-weight: 600;
+    color: #333;
 }
 
-#playlist-list {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-    max-height: 200px;
-    overflow-y: auto;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+/* REPRODUCTOR DE AUDIO NATIVO */
+#audio-player {
+    width: 100%;
+    margin-top: 15px;
+    /* Estilos nativos del navegador */
 }
 
-#playlist-list li {
-    padding: 8px 10px;
-    border-bottom: 1px solid #eee;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-#playlist-list li:hover {
-    background-color: #f9f9f9;
-}
-
-#playlist-list li.playing {
-    background-color: #d1e7ff; /* Azul claro */
-    font-weight: bold;
+/* SECCIÓN DEL WIDGET (HISTORIAL) */
+#widget-section h2 {
+    color: #555;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
 }
