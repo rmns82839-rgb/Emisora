@@ -1,7 +1,6 @@
-// --- CONFIGURACIÓN CLAVE DEL STREAM ---
+// --- CONFIGURACIÓN CLAVE DEL STREAM (TU ENLACE PERSONAL) ---
 
-// ¡TU ENLACE PERSONAL Y SEGURO DE CASTHOST!
-// Este enlace es el que conecta a tu servidor.
+// **IMPORTANTE:** Revisa que este enlace sea el correcto de tu servidor CastHost
 const STREAM_URL = "https://stream.casthost.net/listen/mmm/radio.mp3"; 
 
 
@@ -39,11 +38,11 @@ audioPlayer.addEventListener('pause', () => {
     statusMessage.textContent = "⏸️ Pausado. Presiona Play para continuar.";
 });
 
-// 4. En caso de error (El servidor está vacío o inactivo)
+// 4. En caso de error de conexión
 audioPlayer.addEventListener('error', (e) => {
     console.error("Error al reproducir el stream:", e);
-    // Mensaje ajustado para reflejar que la URL es personal:
-    statusMessage.textContent = "❌ ERROR: No se pudo conectar a la emisora. Asegúrate de que el software BUTT está transmitiendo la señal.";
+    // Este mensaje indica que el servidor no está transmitiendo audio.
+    statusMessage.textContent = "❌ ERROR: El servidor está en línea, pero no está transmitiendo audio (verifica el AutoDJ o BUTT).";
 });
 
 
