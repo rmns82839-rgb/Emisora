@@ -1,9 +1,8 @@
 // --- CONFIGURACIÓN CLAVE DEL STREAM ---
 
-// Este enlace de prueba (RFI Musique) utiliza HTTPS y un puerto estándar, 
-// por lo que tiene una alta compatibilidad con GitHub Pages.
-// Cuando tengas tu URL real de tu proveedor, sustitúyela aquí.
-const STREAM_URL = "https://stream.rfi.fr/rfimusique/rfimusique.mp3"; 
+// ¡TU ENLACE PERSONAL Y SEGURO DE CASTHOST!
+// Este enlace es el que conecta a tu servidor.
+const STREAM_URL = "https://stream.casthost.net/listen/mmm/radio.mp3"; 
 
 
 // --- VARIABLES GLOBALES ---
@@ -40,14 +39,13 @@ audioPlayer.addEventListener('pause', () => {
     statusMessage.textContent = "⏸️ Pausado. Presiona Play para continuar.";
 });
 
-// 4. En caso de error de conexión
+// 4. En caso de error (El servidor está vacío o inactivo)
 audioPlayer.addEventListener('error', (e) => {
     console.error("Error al reproducir el stream:", e);
-    // Este mensaje indica que el navegador bloqueó el stream por seguridad o el enlace falló.
-    statusMessage.textContent = "❌ ERROR: No se pudo conectar al servidor de streaming. Intenta recargar la página.";
+    // Mensaje ajustado para reflejar que la URL es personal:
+    statusMessage.textContent = "❌ ERROR: No se pudo conectar a la emisora. Asegúrate de que el software BUTT está transmitiendo la señal.";
 });
 
 
 // --- ARRANQUE ---
-// Inicia la lógica del reproductor tan pronto como se carga la página
 loadStream();
