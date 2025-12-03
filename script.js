@@ -1,9 +1,9 @@
 // --- CONFIGURACIÓN CLAVE DEL STREAM ---
 
-// ENLACE DIRECTO DEL STREAM:
-// Este enlace apunta directamente al flujo de audio de la emisora Maranatha Radio.
-// Funciona con HTTPS, lo que previene los errores de seguridad en GitHub Pages.
-const STREAM_URL = "https://21653.live.streamerr.co:8040/listen"; 
+// Este enlace de prueba (RFI Musique) utiliza HTTPS y un puerto estándar, 
+// por lo que tiene una alta compatibilidad con GitHub Pages.
+// Cuando tengas tu URL real de tu proveedor, sustitúyela aquí.
+const STREAM_URL = "https://stream.rfi.fr/rfimusique/rfimusique.mp3"; 
 
 
 // --- VARIABLES GLOBALES ---
@@ -13,7 +13,7 @@ const statusMessage = document.getElementById('status-message');
 
 // --- FUNCIÓN PRINCIPAL DE CARGA ---
 function loadStream() {
-    // Establece la fuente de audio a la URL del stream
+    // Establece la fuente de audio
     audioPlayer.src = STREAM_URL;
     
     // Intenta cargar el recurso
@@ -43,6 +43,7 @@ audioPlayer.addEventListener('pause', () => {
 // 4. En caso de error de conexión
 audioPlayer.addEventListener('error', (e) => {
     console.error("Error al reproducir el stream:", e);
+    // Este mensaje indica que el navegador bloqueó el stream por seguridad o el enlace falló.
     statusMessage.textContent = "❌ ERROR: No se pudo conectar al servidor de streaming. Intenta recargar la página.";
 });
 
