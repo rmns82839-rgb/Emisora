@@ -2,18 +2,37 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Emisora Cristiana EN VIVO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📻 Emisora Cristiana EN VIVO</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="player-container">
-        <h2>📻 Nuestra Emisora Cristiana (EN VIVO)</h2>
+    <div id="main-container">
         
-        <audio id="audio-player" controls></audio>
-        
-        <div id="info-display">
-            <p id="status-message">Conectando con la señal...</p>
+        <div id="player-container" class="card">
+            <h1>Transmisión en Vivo</h1>
+            
+            <div id="info-display">
+                <p id="status-message">Conectando con la señal...</p>
+            </div>
+            
+            <audio id="audio-player" controls></audio>
         </div>
+
+        <div id="widget-section" class="card">
+            <h2>Historial de Reproducción</h2>
+            
+            <iframe 
+                src="https://stream.casthost.net/public/mmm/history" 
+                frameborder="0" 
+                allowtransparency="true" 
+                style="width: 100%; min-height: 300px; border: 0;"
+            >
+                Loading ...
+            </iframe>
+        </div>
+
     </div>
     
     <script src="script.js"></script>
