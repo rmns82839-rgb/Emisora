@@ -3,33 +3,45 @@ body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinea arriba para evitar que el widget sea muy alto */
-    background: linear-gradient(135deg, #e0eafc, #cfdef3); /* Gradiente suave */
+    align-items: center; /* Centra el reproductor verticalmente */
     min-height: 100vh;
     margin: 0;
     padding: 20px;
     color: #333;
+    
+    /* ESTILOS DE FONDO CON IMAGEN */
+    background-image: url('generaciones.jpeg'); /* ¡TU IMAGEN DE FONDO AQUI! */
+    background-size: cover; /* Cubre todo el fondo */
+    background-position: center;
+    background-attachment: fixed;
 }
 
 #main-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px; /* Espacio entre el reproductor y el widget */
     max-width: 450px;
     width: 100%;
 }
 
 /* ESTILO GENERAL DE TARJETA (CARD) */
 .card {
-    background-color: #ffffff;
+    /* CAMBIO AQUI: Ahora es 80% opaco para translucidez (rgba(R, G, B, Opacidad)) */
+    background-color: rgba(255, 255, 255, 0.8); 
     padding: 30px;
-    border-radius: 18px; /* Bordes suaves */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-3px); /* Pequeño efecto hover */
+    transform: translateY(-3px);
+}
+
+/* ESTILO DEL LOGO */
+#radio-logo {
+    width: 100%; 
+    max-width: 150px; 
+    height: auto;
+    margin: 0 auto 25px auto; 
+    display: block;
 }
 
 /* ESTILO DEL REPRODUCTOR */
@@ -44,13 +56,13 @@ h1 {
     font-size: 1.6em;
 }
 
-/* DISPLAY DE ESTADO */
+/* DISPLAY DE ESTADO (MANTENIDO OPACIDAD ALTA PARA MEJOR LECTURA) */
 #info-display {
     margin: 15px 0;
     padding: 12px;
-    background-color: #f7f7f9;
+    background-color: rgba(240, 240, 240, 0.9); /* Ligeramente traslúcido */
     border-radius: 10px;
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
 }
 
 #status-message {
@@ -62,14 +74,4 @@ h1 {
 #audio-player {
     width: 100%;
     margin-top: 15px;
-    /* Estilos nativos del navegador */
-}
-
-/* SECCIÓN DEL WIDGET (HISTORIAL) */
-#widget-section h2 {
-    color: #555;
-    font-size: 1.2em;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 10px;
 }
