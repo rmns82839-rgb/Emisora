@@ -10,7 +10,7 @@ body {
     color: #333;
     
     /* ESTILOS DE FONDO CON IMAGEN */
-    background-image: url('generaciones.jpeg'); /* ¡TU IMAGEN DE FONDO AQUI! */
+    background-image: url('generaciones.jpg'); /* ¡TU IMAGEN DE FONDO AQUI! */
     background-size: cover; /* Cubre todo el fondo */
     background-position: center;
     background-attachment: fixed;
