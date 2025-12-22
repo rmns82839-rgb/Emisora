@@ -6,25 +6,38 @@
     <title>📻 Emisora Cristiana Iglesia MMM Suba Rincón</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div id="main-container">
-        
         <div id="player-container" class="card">
             
-            <h1>Emisora Cristiana Iglesia MMM Suba Rincón</h1>
+            <header>
+                <h1>Iglesia MMM Suba Rincón</h1>
+                <p id="eslogan">"El mensaje de vida que transforma, para que nadie se pierda."</p>
+            </header>
             
-            <p id="eslogan">"El mensaje de vida que transforma, para que nadie se pierda."</p>
-            
-            <img src="logo.png" alt="Logo de la Misión" id="radio-logo">
+            <div class="logo-wrapper">
+                <img src="logo.png" alt="Logo MMM" id="radio-logo">
+            </div>
 
             <div id="info-display">
-                <p id="status-message">Conectando con la señal...</p>
+                <div class="status-badge">
+                    <span id="dot" class="dot-inactive"></span>
+                    <p id="status-message">Cargando sintonía...</p>
+                </div>
             </div>
             
-            <audio id="audio-player" controls></audio>
+            <div class="controls-section">
+                <audio id="audio-player"></audio>
+                
+                <button id="play-pause-btn" class="main-btn">
+                    <i class="fas fa-play"></i> ESCUCHAR AHORA
+                </button>
+            </div>
+
         </div>
-        </div>
+    </div>
     
     <script src="script.js"></script>
 </body>
