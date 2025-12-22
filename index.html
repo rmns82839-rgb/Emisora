@@ -3,42 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📻 Emisora Cristiana Iglesia MMM Suba Rincón</title>
+    <title>📻 MMM Suba Rincón | Emisora de Vanguardia</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="background-overlay"></div>
+    
     <div id="main-container">
-        <div id="player-container" class="card">
-            
+        
+
+        <div id="player-card" class="glass-card">
             <header>
-                <h1>Iglesia MMM Suba Rincón</h1>
-                <p id="eslogan">"El mensaje de vida que transforma, para que nadie se pierda."</p>
+                <span class="live-badge"><i class="fas fa-satellite-dish"></i> EN VIVO</span>
+                <h1>MMM SUBA RINCÓN</h1>
+                <p class="tagline">"Vanguardia en el mensaje de vida"</p>
             </header>
             
-            <div class="logo-wrapper">
-                <img src="logo.png" alt="Logo MMM" id="radio-logo">
+            <div class="visualizer-container">
+                <img src="logo.png" alt="Logo Emisora" id="radio-logo" class="pulse-animation">
             </div>
 
             <div id="info-display">
-                <div class="status-badge">
-                    <span id="dot" class="dot-inactive"></span>
-                    <p id="status-message">Cargando sintonía...</p>
+                <p id="status-message">Sintonizando frecuencia...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="fill"></div>
                 </div>
             </div>
             
-            <div class="controls-section">
+            <div class="controls">
                 <audio id="audio-player"></audio>
-                
-                <button id="play-pause-btn" class="main-btn">
-                    <i class="fas fa-play"></i> ESCUCHAR AHORA
+                <button id="play-pause-btn" class="btn-play-custom">
+                    <img src="play-icon.png" alt="Play" id="btn-img">
                 </button>
             </div>
 
+            <div class="social-links">
+                <a href="https://facebook.com/TULINK" target="_blank" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/TULINK" target="_blank" class="social-icon ig"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/TULINK" target="_blank" class="social-icon wa"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://youtube.com/TULINK" target="_blank" class="social-icon yt"><i class="fab fa-youtube"></i></a>
+            </div>
+                <nav class="navbar">
+            <a href="index.html" class="nav-link active">Inicio</a>
+            <a href="foro.html" class="nav-link">Foro Cristiano</a>
+        </nav>
         </div>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
