@@ -1,77 +1,96 @@
-/* RESET Y FUENTE */
+:root {
+    --primary: #00d2ff;
+    --accent: #92fe9d;
+    --dark: #0f0f1b;
+    --glass: rgba(255, 255, 255, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
     font-family: 'Poppins', sans-serif;
+    background: var(--dark);
+    background-image: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center; /* Centra el reproductor verticalmente */
-    min-height: 100vh;
-    margin: 0;
-    padding: 20px;
-    color: #333;
-    
-    /* ESTILOS DE FONDO CON IMAGEN */
-    background-image: url('generacion.jpg'); /* ¡TU IMAGEN DE FONDO AQUI! */
-    background-size: cover; /* Cubre todo el fondo */
-    background-position: center;
-    background-attachment: fixed;
+    align-items: center;
+    color: white;
+    overflow: hidden;
 }
 
-#main-container {
-    max-width: 450px;
-    width: 100%;
-}
-
-/* ESTILO GENERAL DE TARJETA (CARD) */
-.card {
-    /* CAMBIO AQUI: Ahora es 80% opaco para translucidez (rgba(R, G, B, Opacidad)) */
-    background-color: rgba(255, 255, 255, 0.8); 
-    padding: 30px;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-3px);
-}
-
-/* ESTILO DEL LOGO */
-#radio-logo {
-    width: 100%; 
-    max-width: 150px; 
-    height: auto;
-    margin: 0 auto 25px auto; 
-    display: block;
-}
-
-/* ESTILO DEL REPRODUCTOR */
-#player-container {
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 40px;
     text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.5);
 }
 
-h1 {
-    color: #4CAF50; /* Verde vibrante */
-    margin-bottom: 20px;
-    font-weight: 600;
-    font-size: 1.6em;
+h1 { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; letter-spacing: 2px; color: var(--primary); }
+
+.tagline { font-size: 0.8rem; opacity: 0.8; margin-bottom: 20px; }
+
+.live-badge {
+    background: #ff004c;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    animation: blink 1.5s infinite;
 }
 
-/* DISPLAY DE ESTADO (MANTENIDO OPACIDAD ALTA PARA MEJOR LECTURA) */
-#info-display {
-    margin: 15px 0;
-    padding: 12px;
-    background-color: rgba(240, 240, 240, 0.9); /* Ligeramente traslúcido */
-    border-radius: 10px;
-    border: 1px solid #ddd;
+.visualizer-container { margin: 20px 0; position: relative; }
+
+#radio-logo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 5px solid var(--glass);
+    object-fit: cover;
 }
 
-#status-message {
-    font-weight: 600;
-    color: #333;
+.pulse-animation { animation: pulse 2s infinite; }
+
+.btn-play-custom {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin-top: 20px;
 }
 
-/* REPRODUCTOR DE AUDIO NATIVO */
-#audio-player {
-    width: 100%;
-    margin-top: 15px;
+.btn-play-custom img { width: 100px; height: 100px; filter: drop-shadow(0 0 10px var(--primary)); }
+
+.btn-play-custom:hover { transform: scale(1.1); }
+
+.social-links { margin-top: 30px; display: flex; justify-content: center; gap: 15px; }
+
+.social-icon {
+    color: white;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--glass);
+}
+
+.social-icon:hover { transform: translateY(-5px); color: var(--primary); }
+
+/* Animaciones */
+@keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.4); } 70% { box-shadow: 0 0 0 20px rgba(0, 210, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0); } }
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .glass-card { padding: 20px; }
+    #radio-logo { width: 140px; height: 140px; }
 }
