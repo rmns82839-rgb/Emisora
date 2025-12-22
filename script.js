@@ -5,22 +5,29 @@ const statusMessage = document.getElementById('status-message');
 const playBtn = document.getElementById('play-pause-btn');
 const btnImg = document.getElementById('btn-img');
 
+// Pre-carga la URL
 audioPlayer.src = STREAM_URL;
 
 playBtn.addEventListener('click', () => {
     if (audioPlayer.paused) {
+        // En GitHub, el play() debe ser activado por un clic real
         audioPlayer.play()
             .then(() => {
-                statusMessage.textContent = "🔊 TRANSMITIENDO EN VIVO";
-                btnImg.src = "pause-icon.png"; // Cambia a la imagen de pausa
+                statusMessage.textContent = "▶️ AL AIRE - BENDICIONES";
+                btnImg.src = "pause-icon.png"; 
             })
             .catch(err => {
-                statusMessage.textContent = "❌ Error: Permita 'Contenido no seguro'";
-                console.error(err);
+                statusMessage.textContent = "❌ ERROR: Haz clic en el candado y permite 'Contenido no seguro'";
+                console.error("Error de reproducción:", err);
             });
     } else {
         audioPlayer.pause();
         statusMessage.textContent = "PAUSADO";
-        btnImg.src = "play-icon.png"; // Vuelve a la imagen de play
+        btnImg.src = "play-icon.png";
     }
+});
+
+// Detectar si el servidor de la radio se cae
+audioPlayer.addEventListener('error', () => {
+    statusMessage.textContent = "❌ SEÑAL NO DISPONIBLE (REVISA BUTT)";
 });
