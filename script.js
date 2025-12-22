@@ -1,17 +1,15 @@
-// --- CONFIGURACIÓN CLAVE DEL STREAM (TU ENLACE PERSONAL) ---
+// --- CONFIGURACIÓN CLAVE DEL STREAM (LISTEN2MYRADIO) ---
 
-// **IMPORTANTE:** Revisa que este enlace sea el correcto de tu servidor CastHost
-const STREAM_URL = "https://stream.casthost.net/listen/mmm/radio.mp3"; 
-
+// Usamos tu IP y Puerto actual. El ";stream.mp3" es necesario para Shoutcast.
+const STREAM_URL = "http://78.129.132.7:14631/;stream.mp3"; 
 
 // --- VARIABLES GLOBALES ---
 const audioPlayer = document.getElementById('audio-player');
 const statusMessage = document.getElementById('status-message');
 
-
 // --- FUNCIÓN PRINCIPAL DE CARGA ---
 function loadStream() {
-    // Establece la fuente de audio
+    // Establece la fuente de audio con la nueva URL de Listen2MyRadio
     audioPlayer.src = STREAM_URL;
     
     // Intenta cargar el recurso
@@ -20,31 +18,29 @@ function loadStream() {
     statusMessage.textContent = "Listo para reproducir. Presiona el botón PLAY.";
 }
 
-
 // --- GESTIÓN DE EVENTOS DEL REPRODUCTOR ---
 
 // 1. Cuando el usuario pulsa Play
 audioPlayer.addEventListener('play', () => {
-    statusMessage.textContent = "▶️ ¡Al aire! Escuchando la señal en vivo.";
+    statusMessage.textContent = "▶️ ¡Al aire! Escuchando la señal de MMM Suba Rincón.";
 });
 
-// 2. Cuando la carga de datos es insuficiente (buffering)
+// 2. Cuando hay retraso o carga (buffering)
 audioPlayer.addEventListener('waiting', () => {
-    statusMessage.textContent = "⏳ Cargando... reconectando con el servidor.";
+    statusMessage.textContent = "⏳ Cargando... conectando con el servidor de la Iglesia.";
 });
 
 // 3. Cuando el stream se detiene (usuario pulsa pausa)
 audioPlayer.addEventListener('pause', () => {
-    statusMessage.textContent = "⏸️ Pausado. Presiona Play para continuar.";
+    statusMessage.textContent = "⏸️ Pausado. Presiona Play para volver a sintonizar.";
 });
 
 // 4. En caso de error de conexión
 audioPlayer.addEventListener('error', (e) => {
     console.error("Error al reproducir el stream:", e);
-    // Este mensaje indica que el servidor no está transmitiendo audio.
-    statusMessage.textContent = "❌ ERROR: El servidor está en línea, pero no está transmitiendo audio (verifica el AutoDJ o BUTT).";
+    // Este mensaje ayuda a saber si el problema es que BUTT no está conectado
+    statusMessage.textContent = "❌ Error: La señal no está disponible. Verifica que BUTT diga 'Connected'.";
 });
-
 
 // --- ARRANQUE ---
 loadStream();
