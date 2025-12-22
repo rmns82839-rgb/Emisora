@@ -1,47 +1,45 @@
-// --- CONFIGURACIÓN CLAVE DEL STREAM (DATOS ACTUALIZADOS) ---
-
-// IP y Puerto obtenidos de tu última conexión exitosa en BUTT (Imagen 17).
-// IMPORTANTE: Se usa la nueva IP 78.129.237.51 y el Puerto 10818.
+// --- CONFIGURACIÓN TÉCNICA (LISTEN2MYRADIO) ---
 const STREAM_URL = "http://78.129.237.51:10818/;stream.mp3"; 
 
-// --- VARIABLES GLOBALES ---
+// --- ELEMENTOS DE LA INTERFAZ ---
 const audioPlayer = document.getElementById('audio-player');
 const statusMessage = document.getElementById('status-message');
+const playBtn = document.getElementById('play-pause-btn');
+const statusDot = document.getElementById('dot');
 
-// --- FUNCIÓN PRINCIPAL DE CARGA ---
-function loadStream() {
-    // Establece la fuente de audio con los datos actuales del servidor
+// --- FUNCIÓN DE INICIO ---
+function initRadio() {
     audioPlayer.src = STREAM_URL;
-    
-    // Carga el recurso para que esté listo al presionar Play
-    audioPlayer.load();
-
-    statusMessage.textContent = "Listo para reproducir. Presiona el botón PLAY.";
+    statusMessage.textContent = "Señal lista. Presione Play.";
 }
 
-// --- GESTIÓN DE EVENTOS DEL REPRODUCTOR ---
-
-// 1. Cuando el usuario pulsa Play
-audioPlayer.addEventListener('play', () => {
-    statusMessage.textContent = "▶️ ¡Al aire! Escuchando la señal de MMM Suba Rincón.";
+// --- LÓGICA DEL BOTÓN PERSONALIZADO ---
+playBtn.addEventListener('click', () => {
+    if (audioPlayer.paused) {
+        audioPlayer.play()
+            .then(() => {
+                statusMessage.textContent = "¡Al aire! Bendiciendo tu vida.";
+                statusDot.className = "dot-active";
+                playBtn.innerHTML = '<i class="fas fa-pause"></i> PAUSAR';
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                statusMessage.textContent = "❌ Error de conexión. Reintente.";
+                alert("Recuerde permitir 'Contenido no seguro' en el candado del navegador.");
+            });
+    } else {
+        audioPlayer.pause();
+        statusMessage.textContent = "Transmisión pausada.";
+        statusDot.className = "dot-inactive";
+        playBtn.innerHTML = '<i class="fas fa-play"></i> ESCUCHAR AHORA';
+    }
 });
 
-// 2. Cuando hay retraso o carga de datos (buffering)
-audioPlayer.addEventListener('waiting', () => {
-    statusMessage.textContent = "⏳ Cargando... conectando con el servidor de la Iglesia.";
+// Manejo de errores automáticos (si BUTT se desconecta)
+audioPlayer.addEventListener('error', () => {
+    statusMessage.textContent = "❌ Señal fuera de línea (Verificar BUTT).";
+    statusDot.className = "dot-inactive";
 });
 
-// 3. Cuando el usuario pausa la reproducción
-audioPlayer.addEventListener('pause', () => {
-    statusMessage.textContent = "⏸️ Pausado. Presiona Play para volver a sintonizar.";
-});
-
-// 4. En caso de error (si el servidor se apaga o BUTT se desconecta)
-audioPlayer.addEventListener('error', (e) => {
-    console.error("Error al reproducir el stream:", e);
-    // Mensaje de ayuda para el administrador
-    statusMessage.textContent = "❌ Error: La señal no está disponible. Verifica que BUTT diga 'Connected'.";
-});
-
-// --- ARRANQUE ---
-loadStream();
+// Inicializar al cargar la página
+initRadio();
